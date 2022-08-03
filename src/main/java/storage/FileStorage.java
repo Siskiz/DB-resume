@@ -11,8 +11,8 @@ import java.util.Objects;
 
 public class FileStorage extends AbstractStorage<File> {
 
-    private File directory;
-    private StreamSerializer streamSerializer;
+    private final File directory;
+    private final StreamSerializer streamSerializer;
 
     public FileStorage(File directory, StreamSerializer streamSerializer) {
         Objects.requireNonNull(directory, "directory must not be null");
@@ -47,9 +47,12 @@ public class FileStorage extends AbstractStorage<File> {
     @Override
     protected void doSave(Resume r, File file) {
         try {
-            file.createNewFile();
+            boolean a = file.createNewFile();
+            if (!a) {
+                throw new StorageException("Couldn't create file");
+            }
         } catch (IOException e) {
-            throw new StorageException("Couldn't create file" + file.getAbsolutePath(), file.getName(), e);
+            throw new StorageException("Couldn't create file: " + file.getAbsolutePath(), file.getName(), e);
         }
         doUpdate(r, file);
     }

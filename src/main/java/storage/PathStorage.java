@@ -15,15 +15,15 @@ import java.util.stream.Stream;
 
 public class PathStorage extends AbstractStorage<Path> {
 
-    private Path directory;
-    private StreamSerializer streamSerializer;
+    private final Path directory;
+    private final StreamSerializer streamSerializer;
 
-    public PathStorage(String dir, StreamSerializer streamSerializer) {
-        Objects.requireNonNull(dir, "directory must not be null");
+    public PathStorage(String directory, StreamSerializer streamSerializer) {
+        Objects.requireNonNull(directory, "directory must not be null");
 
-        directory = Paths.get(dir);
+        this.directory = Paths.get(directory);
         this.streamSerializer = streamSerializer;
-        if (!Files.isDirectory(directory) || !Files.isWritable(directory)) {
+        if (!Files.isDirectory(this.directory) || !Files.isWritable(this.directory)) {
             throw new StorageException("is not directory or is not writable");
         }
     }
