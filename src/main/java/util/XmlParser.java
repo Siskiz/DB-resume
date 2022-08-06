@@ -1,7 +1,5 @@
 package util;
 
-import exception.StorageException;
-
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
@@ -24,7 +22,7 @@ public class XmlParser {
 
             unmarshaller = ctx.createUnmarshaller();
         } catch (JAXBException e) {
-            throw new StorageException("Couldn't create JAXBContext object", e);
+            throw new IllegalStateException(e);
         }
 
     }
@@ -33,7 +31,7 @@ public class XmlParser {
         try {
             return (T) unmarshaller.unmarshal(reader);
         } catch (JAXBException e) {
-            throw new StorageException("Couldn't read object", e);
+            throw new IllegalStateException(e);
         }
     }
 
@@ -41,7 +39,7 @@ public class XmlParser {
         try {
             marshaller.marshal(instance, writer);
         } catch (JAXBException e) {
-            throw new StorageException("Couldn't write object", e);
+            throw new IllegalStateException(e);
         }
     }
 
