@@ -1,6 +1,6 @@
 package model;
 
-import util.DateUtil;
+import exception.StorageException;
 import util.LocalDateAdapter;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Objects;
 
 import static util.DateUtil.NOW;
+import static util.DateUtil.of;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Organization implements Serializable {
@@ -29,10 +30,12 @@ public class Organization implements Serializable {
 
     public Organization(String name, String url, Position... positions) {
         this(new Link(name, url), Arrays.asList(positions));
-        Objects.requireNonNull(positions, "positions must not be null");
     }
 
     public Organization(Link homePage, List<Position> positions) {
+        if (positions.size() < 1) {
+            throw new StorageException("positions can't be zero");
+        }
         this.homePage = homePage;
         this.positions = positions;
     }
@@ -70,11 +73,11 @@ public class Organization implements Serializable {
         }
 
         public Position(int startYear, Month startMonth, String title, String description) {
-            this(DateUtil.of(startYear, startMonth), NOW, title, description);
+            this(of(startYear, startMonth), NOW, title, description);
         }
 
         public Position(int startYear, Month startMonth, int endYear, Month endMonth, String title, String description) {
-            this(DateUtil.of(startYear, startMonth), DateUtil.of(endYear, endMonth), title, description);
+            this(of(startYear, startMonth), of(endYear, endMonth), title, description);
         }
 
         public Position(LocalDate startDate, LocalDate endDate, String title, String description) {
@@ -85,6 +88,22 @@ public class Organization implements Serializable {
             this.endDate = endDate;
             this.title = title;
             this.description = description;
+        }
+
+        public LocalDate getStartDate() {
+            return startDate;
+        }
+
+        public void setStartDate(LocalDate startDate) {
+            this.startDate = startDate;
+        }
+
+        public LocalDate getEndDate() {
+            return endDate;
+        }
+
+        public void setEndDate(LocalDate endDate) {
+            this.endDate = endDate;
         }
 
         @Override

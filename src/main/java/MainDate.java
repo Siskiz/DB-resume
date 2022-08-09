@@ -8,7 +8,6 @@ import java.util.Date;
 import java.util.TimeZone;
 
 public class MainDate {
-
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
         Date date = new Date();
@@ -30,5 +29,4 @@ public class MainDate {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("YY/MM/dd");
         System.out.println(dtf.format(ldt));
     }
-
 }
