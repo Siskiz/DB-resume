@@ -13,10 +13,8 @@ public class JsonParser {
 
 
     private static final Gson GSON = new GsonBuilder()
-            .registerTypeAdapter(LocalDate.class, new LocalDateSerializer())
-            .registerTypeAdapter(LocalDate.class, new LocalDateDeserializer())
-            .registerTypeAdapter(LocalDateTime.class, new LocalDateTimeSerializer())
-            .registerTypeAdapter(LocalDateTime.class, new LocalDateTimeDeserializer())
+            .registerTypeAdapter(LocalDate.class, new JsonLocalDateAdapter())
+            .registerTypeAdapter(LocalDateTime.class, new JsonLocalDateTimeAdapter())
             .registerTypeAdapter(Section.class, new JsonSectionAdapter<Section>())
             .create();
 
