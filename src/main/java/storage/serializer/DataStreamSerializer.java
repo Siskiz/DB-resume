@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 public class DataStreamSerializer implements StreamSerializer {
+
     @Override
     public void doWrite(Resume r, OutputStream os) throws IOException {
         try (DataOutputStream dos = new DataOutputStream(os)) {
@@ -59,15 +60,20 @@ public class DataStreamSerializer implements StreamSerializer {
         }
     }
 
+    @FunctionalInterface
     private interface ElementProcessor {
         void process() throws IOException;
 
     }
 
+    @FunctionalInterface
+    //Consumer
     private interface ElementWriter<T> {
         void write(T t) throws IOException;
     }
 
+    @FunctionalInterface
+    //Supplier
     private interface ElementReader<T> {
         T read() throws IOException;
 
@@ -76,7 +82,6 @@ public class DataStreamSerializer implements StreamSerializer {
         dos.writeInt(ld.getYear());
         dos.writeInt(ld.getMonthValue());
     }
-
     private LocalDate readLocalDate(DataInputStream dis) throws IOException {
         return LocalDate.of(dis.readInt(), dis.readInt(), 1);
     }
