@@ -8,6 +8,7 @@ public class LazySingleton {
     }
 
     private static class LazySingletonHolder {
+//      volatile
         private static final LazySingleton INSTANCE = new LazySingleton();
     }
 
