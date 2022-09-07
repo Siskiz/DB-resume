@@ -18,4 +18,14 @@ on "public".contact(resume_uuid, type);
 
 select * from resume;
 
+select * from contact;
+
 delete from resume;
+
+insert into contact (resume_uuid, "type", "value")
+values
+('7de882da-02f2-4d16-8daa-60660aaf4071', 'PHONE', '123456'),
+('7de882da-02f2-4d16-8daa-60660aaf4071', 'SKYPE', 'skype');
+
+SELECT * FROM resume r
+LEFT JOIN contact c ON r.uuid_pk = c.resume_uuid;
