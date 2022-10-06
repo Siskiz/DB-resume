@@ -15,6 +15,6 @@
   <%= "Hello World!" %>
 </h1>
 <br/>
-<a href="hello"> Hello Servlet</a>
+<a href="resume"> Hello Servlet</a>
 </body>
 </html>

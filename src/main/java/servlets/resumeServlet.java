@@ -1,11 +1,15 @@
 package servlets;
 
+import jakarta.servlet.ServletConfig;
+import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.ContactType;
 import model.Resume;
+import storage.Storage;
+import util.Config;
 
 import java.io.IOException;
 import java.io.Writer;
@@ -13,10 +17,12 @@ import java.io.Writer;
 @WebServlet(name = "resume", value = "/resume")
 public class resumeServlet extends HttpServlet {
 
-    private String message;
+    private Storage storage;
 
-    public void init() {
-        message = "Hello World!";
+    @Override
+    public void init(ServletConfig config) throws ServletException {
+        super.init(config);
+        storage = Config.get().getStorage();
     }
 
     @Override
@@ -45,7 +51,7 @@ public class resumeServlet extends HttpServlet {
         for (Resume resume : storage.getAllSorted()) {
             writer.write(
                     "<tr>\n" +
-                            "<td><a href=\"resume?uuid=\" + resume.getUuid() + \">" + resume.getFullName() + "</a></td>\n" +
+                            "<td><a href=\"resume?uuid=" + resume.getUuid() + "\">" + resume.getFullName() + "</a></td>\n" +
                             "<td>" + resume.getContact(ContactType.MAIL) + "</td>\n" +
                             "</tr>\n"
             );
