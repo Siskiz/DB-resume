@@ -8,11 +8,11 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
-  <title>JSP - Hello World</title>
+    <title>JSP - Hello World</title>
 </head>
 <body>
 <h1>
-  <%= "Hello World!" %>
+    <%= "Hello World!" %>
 </h1>
 <br/>
 <a href="resume"> Hello Servlet</a>
