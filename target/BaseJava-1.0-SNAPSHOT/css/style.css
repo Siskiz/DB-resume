@@ -12,3 +12,8 @@ footer {
     padding: 5px 20px;
     margin: 20px 0;
 }
+
+footer.h2, header.h2 {
+    background: none repeat scroll 0 0 #A6C9E2;
+    color: black;
+}
