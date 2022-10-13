@@ -24,6 +24,7 @@ public class TestData {
         R4 = new Resume(UUID_4, "Name4");
 
         R1.addContact(ContactType.MAIL, "mail1@ya.ru");
+        R1.addContact(ContactType.SKYPE, "skype.org");
         R1.addContact(ContactType.PHONE, "11111");
         R4.addContact(ContactType.PHONE, "44444");
         R4.addContact(ContactType.SKYPE, "Skype");
