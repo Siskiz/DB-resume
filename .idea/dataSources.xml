@@ -8,5 +8,18 @@
       <jdbc-url>jdbc:postgresql://localhost:5432/resumes</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="heroku-siskiz-basejava" uuid="86500246-9782-4f12-a041-b0a1e730e401">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <remarks>postgres://oyxmmzqvsiljev:26ce164805dcc885a8cc9cbd15cb392c02d3f883c54b0dd729aea597104f855d@ec2-63-32-248-14.eu-west-1.compute.amazonaws.com:5432/dfso2v1bo2433m</remarks>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://ec2-63-32-248-14.eu-west-1.compute.amazonaws.com:5432/dfso2v1bo2433m</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+      <driver-properties>
+        <property name="ssl" value="true" />
+        <property name="sslmode" value="require" />
+        <property name="sslfactory" value="org.postgresql.ssl.NonValidatingFactory" />
+      </driver-properties>
+    </data-source>
   </component>
 </project>

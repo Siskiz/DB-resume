@@ -16,5 +16,20 @@
         </introspection-scope>
       </schema-mapping>
     </data-source>
+    <data-source name="heroku-siskiz-basejava" uuid="86500246-9782-4f12-a041-b0a1e730e401">
+      <database-info product="PostgreSQL" version="14.5 (Ubuntu 14.5-2.pgdg20.04+2)" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.5.0" dbms="POSTGRES" exact-version="14.5" exact-driver-version="42.5">
+        <identifier-quote-string>&quot;</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>oyxmmzqvsiljev</user-name>
+      <schema-mapping>
+        <introspection-scope>
+          <node kind="database" qname="dfso2v1bo2433m">
+            <node kind="schema" qname="public" />
+          </node>
+        </introspection-scope>
+      </schema-mapping>
+    </data-source>
   </component>
 </project>
